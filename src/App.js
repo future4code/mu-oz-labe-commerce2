@@ -1,5 +1,5 @@
 import React from 'react';
-import Body from './components/Body';
+import Main from './components/Main';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import GlobalStyle from './GlobalStyle'
@@ -17,15 +17,18 @@ const FlexContainer = styled.div`
 `
 
 
-function App() {
-  return (
-    <FlexContainer>
-      <GlobalStyle/>
-      <Header />
-      <Body/>
-      <Footer/>
-    </FlexContainer>
-  );
+class App extends React.Component {
+
+  render() {
+    return (
+      <FlexContainer>
+        <GlobalStyle />
+        <Header />
+        <Main />
+        <Footer />
+      </FlexContainer>
+    );
+  }
 }
 
 export default App;
