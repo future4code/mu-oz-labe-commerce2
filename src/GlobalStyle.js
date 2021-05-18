@@ -7,7 +7,7 @@ export const white = '#EBEBEB'
 export const flexColumn = () => {
     return `
         display:flex;
-        justfy-content: center;
+        justify-content: center;
         align-items: center;
         flex-direction: column;
     `
@@ -16,7 +16,7 @@ export const flexColumn = () => {
 export const flexRow = () => {
     return `
         display:flex;
-        justfy-content: center;
+        justify-content: center;
         align-items: center;    
     `
 }
@@ -27,6 +27,9 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         background-color: ${backGroundBlack};
+        font-family: 'Ropa Sans', sans-serif;
+        color: ${white};
+       
     }
 `
 
