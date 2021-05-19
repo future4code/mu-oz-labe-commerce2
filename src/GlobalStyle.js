@@ -1,8 +1,25 @@
-import {createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 export const backGroundBlack = '#1c1c1c'
 export const black = '#272727'
 export const white = '#EBEBEB'
+
+export const flexColumn = () => {
+    return `
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    `
+}
+
+export const flexRow = () => {
+    return `
+        display:flex;
+        justify-content: center;
+        align-items: center;    
+    `
+}
 
 const GlobalStyle = createGlobalStyle`
     body{
@@ -11,6 +28,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         background-color: ${backGroundBlack};
         font-family: 'Ropa Sans', sans-serif;
+        color: ${white};
     }
 `
 
