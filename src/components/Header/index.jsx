@@ -1,5 +1,7 @@
 import React from 'react'
 import ItemsChoicedByUser from '../ItemsChoicedByUser'
+import ItensCarrinho from '../ItensCarrinho/index'
+import nave02 from '../../img/nave-02.png'
 
 import {
     HeaderBackground,
@@ -19,7 +21,8 @@ class Header extends React.Component{
             <HeaderBackground>
                 <HeaderContainer>
                     <button onClick={this.clickHeaderButton}>MiClika</button>
-                    {this.state.buttonHasClicked && <ItemsChoicedByUser />}
+                    {this.state.buttonHasClicked && <ItensCarrinho/>}
+                   
                 </HeaderContainer>
                
             </HeaderBackground>
