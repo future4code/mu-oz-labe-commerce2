@@ -30,6 +30,7 @@ const FlexContainer = styled.div`
 `
 
 
+
 class App extends React.Component {
 
   state = {
@@ -46,15 +47,21 @@ class App extends React.Component {
       {image: Nave10, title: 'Nave 10', price: 3.599, quantity: 0},
       {image: Nave11, title: 'Nave 11', price: 3.599, quantity: 0},
       {image: Nave12, title: 'Nave 12', price: 3.599, quantity: 0}
-    ]
+    ],
+    carrinho: []
   }
+
+  AddToCart(item) {
+    console.log(item);
+  }
+
 
   render() {
     return (
       <FlexContainer>
         <GlobalStyle />
         <Header />
-        <Main products={this.state.products}/>
+        <Main products={this.state.products} AddToCart={this.AddToCart}/>
         <Footer />
       </FlexContainer>
     );

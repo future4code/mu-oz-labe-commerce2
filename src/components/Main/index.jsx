@@ -13,7 +13,9 @@ class MainContainer extends React.Component {
         return (
             <Main>
                 <FilterToPrice />
-                <CardsGrid products={this.props.products} />
+                <CardsGrid 
+                products={this.props.products} 
+                AddToCart={this.props.AddToCart} />
             </Main> 
         )
     }
