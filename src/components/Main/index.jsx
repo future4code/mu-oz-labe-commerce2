@@ -13,7 +13,7 @@ class MainContainer extends React.Component {
         return (
             <Main>
                 <FilterToPrice />
-                <CardsGrid />
+                <CardsGrid products={this.props.products} />
             </Main> 
         )
     }
