@@ -7,7 +7,7 @@ import {
     
 } from './styled'
 
-class Body extends React.Component {
+class MainContainer extends React.Component {
 
     render() {
         return (
@@ -19,4 +19,4 @@ class Body extends React.Component {
     }
 }
 
-export default Body
+export default MainContainer
