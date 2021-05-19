@@ -1,5 +1,6 @@
 import React from 'react'
-import ItemsChoicedByUser from '../ItemsChoicedByUser'
+import ItemsChosenByUser from '../ItemsChosenByUser'
+
 
 import {
     HeaderBackground,
@@ -36,7 +37,7 @@ class Header extends React.Component {
                         </DivSearch>
                         <ButtonCart onClick={this.clickHeaderButton}><img src={Carrinho} alt="Carrinho de compras"  /></ButtonCart>
                     </HeaderItems>
-                    {this.state.buttonHasClicked && <ItemsChoicedByUser />}
+                    {this.state.buttonHasClicked && <ItemsChosenByUser />}
                 </HeaderContainer>
 
             </HeaderBackground>
