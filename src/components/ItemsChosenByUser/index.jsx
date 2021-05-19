@@ -37,10 +37,12 @@ export default class ItensCarrinho extends React.Component {
 
     
     render() {
+        console.log(Nave01)
         return (
             <ContainerItem>
              <DeleteIcon src={Delete} alt="delete" />
                 <Nave src={Nave01} alt="nave01" /> 
+                
                 <ContainerNomeDescricao>
                 <Nome>Nave Espacial</Nome> 
                 <Paragrafo>Nave espacial modelo tesla sei la das contas com
