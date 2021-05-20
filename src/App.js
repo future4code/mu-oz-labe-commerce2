@@ -97,13 +97,13 @@ const FlexContainer = styled
                     quantity: 0
                 }
             ],
-            carrinho: [
-               
-            ]
+            carrinho: []
         }
 
-        AddToCart = (item) => {
-            console.log(item);
+        AddToCart = (product) => {
+          this.setState({ 
+            carrinho: [...this.state.carrinho, product]
+          })
         }
         delete = (index) => {
             console.log(index)
