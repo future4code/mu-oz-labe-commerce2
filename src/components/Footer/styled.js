@@ -1,7 +1,12 @@
 import styled from 'styled-components'
 
-export const Text = styled.p`
+import {white} from '../../GlobalStyle'
 
-    color:white;
+export const Footerackground = styled.header`
+
+    background-color: ${white};
+    width: 100%;
+    min-height: 100px;
+
 
 `

@@ -1,13 +1,16 @@
 import React from 'react'
 
-import {Text} from './styled'
+import {Footerackground} from './styled'
 
 class Footer extends React.Component{
 
     render(){
 
         return (
-            <Text>Footer</Text>
+            <Footerackground>
+                <p>Footer</p>
+            </Footerackground> 
+            
         )
     }
 }
