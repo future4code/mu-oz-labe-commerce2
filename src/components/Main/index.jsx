@@ -7,16 +7,18 @@ import {
     
 } from './styled'
 
-class Body extends React.Component {
+class MainContainer extends React.Component {
 
     render() {
         return (
             <Main>
                 <FilterToPrice />
-                <CardsGrid />
+                <CardsGrid 
+                products={this.props.products} 
+                AddToCart={this.props.AddToCart} />
             </Main> 
         )
     }
 }
 
-export default Body
+export default MainContainer

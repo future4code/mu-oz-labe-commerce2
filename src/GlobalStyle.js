@@ -29,7 +29,6 @@ const GlobalStyle = createGlobalStyle`
         background-color: ${backGroundBlack};
         font-family: 'Ropa Sans', sans-serif;
         color: ${white};
-       
     }
 `
 
