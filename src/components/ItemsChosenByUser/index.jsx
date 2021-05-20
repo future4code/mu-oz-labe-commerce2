@@ -20,49 +20,55 @@ import Minus from '../../icons/minus.svg'
 
 
 export default class ItensCarrinho extends React.Component {
-    state={
-        contador: 1,
+    // state={
+    //     contador: 1,
 
-    }
-    adiciona = () => {
-        this.setState({contador: this.state.contador + 1})
-    }
-    subtrai = () => {
-        if(this.state.contador - 1 > 0){
-            this.setState({contador: this.state.contador - 1})
-        }
-        
-    }
+    // }
+    
    
 
     
     render() {
-        console.log(Nave01)
+        
+       
         return (
-            <ContainerItem>
-             <DeleteIcon src={Delete} alt="delete" />
-                <Nave src={Nave01} alt="nave01" /> 
-                
-                <ContainerNomeDescricao>
-                <Nome>Nave Espacial</Nome> 
-                <Paragrafo>Nave espacial modelo tesla sei la das contas com
-                     garantia de fabrica e isso e aquilo la da outra Nave espacial
-                      modelo tesla sei la das contas com garantia de fabrica e isso e 
-                      aquilo la da  </Paragrafo>
-                     </ContainerNomeDescricao>
-                    <ContainerContador>
-                    <PQuantidade>Quantidade</PQuantidade>
-                    <ContainerPlusMinus>
-                  <BotãoContador onClick={this.adiciona}><img src={Plus} alt="mais" /></BotãoContador>
-                     <ContainerNumeroContador>{this.state.contador}</ContainerNumeroContador>
-                    <BotãoContador onClick={this.subtrai}> <img src={Minus} alt="menos" /></BotãoContador>
-                    
-                    </ContainerPlusMinus>
-                    </ContainerContador>
-                     
-            </ContainerItem>
+            <>
+            { this.props.cart.map( (item, index) => {
+            return(
+
+            
+            
+               <ContainerItem>
+                <DeleteIcon src={Delete} alt="delete" onClick={()=> this.props.delete(index)} />
+                   <Nave src={item.image} alt="nave01" /> 
+                   
+                   <ContainerNomeDescricao>
+                   <Nome>{item.title}</Nome> 
+                   <Paragrafo>Nave espacial modelo tesla sei la das contas com
+                        garantia de fabrica e isso e aquilo la da outra Nave espacial
+                         modelo tesla sei la das contas com garantia de fabrica e isso e 
+                         aquilo la da  </Paragrafo>
+                        </ContainerNomeDescricao>
+                       <ContainerContador>
+                       <PQuantidade>Quantidade</PQuantidade>
+                       <ContainerPlusMinus>
+                     <BotãoContador onClick={()=> this.props.add(index)}><img src={Plus} alt="mais" /></BotãoContador>
+                        <ContainerNumeroContador>{item.quantity}</ContainerNumeroContador>
+                       <BotãoContador onClick={()=>this.props.sub(index)}> <img src={Minus} alt="menos" /></BotãoContador>
+                       
+                       </ContainerPlusMinus>
+                       </ContainerContador>
+                        
+               </ContainerItem>
+            )
+               }
+
+            )
+            } 
+            </>
             
         )
+
     }
 }
 

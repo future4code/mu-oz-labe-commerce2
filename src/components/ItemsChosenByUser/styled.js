@@ -54,6 +54,7 @@ height: 24vh;
 `
 export const DeleteIcon = styled.img`
  margin-bottom:12%;
+ cursor: pointer;
 
 `
 export const Nome = styled.h1`
