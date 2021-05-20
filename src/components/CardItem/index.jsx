@@ -15,7 +15,7 @@ class CardItem extends React.Component{
                 <CardContentContainer>
                     <CardTitle>{this.props.product.title}</CardTitle>
                     <CardPrice>R$ {this.props.product.price},00</CardPrice>
-                    <CardButton onClick={() => this.props.AddToCart(this.props.index)}>Adicionar</CardButton>
+                    <CardButton onClick={() => this.props.AddToCart(this.props.product)}>Adicionar</CardButton>
                 </CardContentContainer>
             </CardItemContainer>
         )
