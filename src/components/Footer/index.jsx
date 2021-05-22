@@ -1,6 +1,6 @@
 import React from 'react'
-
 import { FooterBackground, Text, ContainerFooter, R, G, B } from './styled'
+
 
 class Footer extends React.Component {
 

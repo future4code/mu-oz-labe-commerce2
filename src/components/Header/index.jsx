@@ -32,10 +32,16 @@ class Header extends React.Component {
                     <HeaderItems>
                         <LogoHeader src={Logo} alt="Logo Space eComerce" />
                         <DivSearch>
-                            <InputSearch type="text" name="Digite os items" placeholder="Digite sua busca..." />
+                            <InputSearch
+                                type="text"
+                                name="Digite os items"
+                                placeholder="Digite sua busca..."
+                                onChange={(e) => this.props.searchInput(e)}
+                                value={this.props.searchInputArea}
+                            />
                             <LupaIcon src={Lupa} alt="" srcset="" />
                         </DivSearch>
-                        <ButtonCart onClick={this.clickHeaderButton}><img src={Carrinho} alt="Carrinho de compras"  /></ButtonCart>
+                        <ButtonCart onClick={this.clickHeaderButton}><img src={Carrinho} alt="Carrinho de compras" /></ButtonCart>
                     </HeaderItems>
                     {this.state.buttonHasClicked && <ItemsChosenByUser cart={this.props.cart} 
                     add={this.props.add} 

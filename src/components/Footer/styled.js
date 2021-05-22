@@ -19,7 +19,6 @@ export const Text = styled.p`
 `
 
 export const Circulo = styled.div`
-
     border-radius: 50%;
     margin: 0 5px;
     height: 25px;
