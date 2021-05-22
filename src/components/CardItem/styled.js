@@ -6,9 +6,9 @@ export const CardItemContainer = styled.div`
     display:flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 29%;
-    min-width: 145px;
+    min-width: 300px;
     margin: 1%;
     padding: 10px;
     background-color: ${white};

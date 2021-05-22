@@ -1,13 +1,20 @@
 import React from 'react'
 
-import {Text} from './styled'
+import { FooterBackground, Text, ContainerFooter, R, G, B } from './styled'
 
-class Footer extends React.Component{
+class Footer extends React.Component {
 
-    render(){
+    render() {
 
         return (
-            <Text>Footer</Text>
+            <FooterBackground>
+                <Text>Desenvolvido por</Text>
+                <ContainerFooter>
+                    <R></R>
+                    <G></G>
+                    <B></B>
+                </ContainerFooter>
+            </FooterBackground>
         )
     }
 }
