@@ -11,6 +11,8 @@ import {
     InputSearch,
     LupaIcon,
     ButtonCart,
+    DivCart,
+    NumberItemsOfCart
 } from './styled'
 
 import Logo from '../../icons/Logo.svg'
@@ -41,14 +43,17 @@ class Header extends React.Component {
                             />
                             <LupaIcon src={Lupa} alt="" srcset="" />
                         </DivSearch>
-                        <ButtonCart onClick={this.clickHeaderButton}><img src={Carrinho} alt="Carrinho de compras" /></ButtonCart>
+                        <DivCart>
+                            <NumberItemsOfCart>{this.props.carrinho && this.props.carrinho.length}</NumberItemsOfCart>
+                            <ButtonCart onClick={this.clickHeaderButton}><img src={Carrinho} alt="Carrinho de compras" /></ButtonCart>
+                        </DivCart>
                     </HeaderItems>
-                    {this.state.buttonHasClicked && <ItemsChosenByUser cart={this.props.cart} 
-                    add={this.props.add} 
-                    sub={this.props.sub} 
-                    delete={this.props.delete} 
-                    totalCarrinho={this.props.totalCarrinho}
-                    somaValores={this.props.somaValores}
+                    {this.state.buttonHasClicked && <ItemsChosenByUser cart={this.props.cart}
+                        add={this.props.add}
+                        sub={this.props.sub}
+                        delete={this.props.delete}
+                        totalCarrinho={this.props.totalCarrinho}
+                        somaValores={this.props.somaValores}
                     />}
                 </HeaderContainer>
 

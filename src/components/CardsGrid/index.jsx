@@ -1,7 +1,7 @@
 import React from 'react'
 import CardItem from '../CardItem'
 
-import { CardsGridContainer, WhiteParagraph } from './styled'
+import { CardsGridContainer } from './styled'
 
 class CardsGrid extends React.Component {
 

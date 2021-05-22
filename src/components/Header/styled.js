@@ -70,4 +70,17 @@ export const ButtonCart = styled.button`
     border: none;
     outline: none;
     cursor: pointer;
+ 
+`
+
+export const DivCart = styled.div`
+    position: relative;
+`
+
+export const NumberItemsOfCart = styled.h2`
+    pointer-events: none;
+    position: absolute;
+    left: 50%;    
+    transform: translatey(-14px);
+    color: ${white};
 `

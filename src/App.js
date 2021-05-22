@@ -116,7 +116,7 @@ class App extends React.Component {
     }
     
     somaValores = () => {
-        let accumulator = 0
+        // let accumulator = 0
         const totalCompra = this.state.carrinho.map((item) => {
             return item.price * item.quantity
         }).reduce((accumulator, totalCompra) => totalCompra += accumulator, 0)
@@ -227,6 +227,7 @@ class App extends React.Component {
                     somaValores={this.somaValores}
                     searchInput={this.searchInput}
                     searchValue={this.state.searchInputArea}
+                    carrinho={this.state.carrinho}
                 />
                                             
                 <Main
