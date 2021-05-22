@@ -7,9 +7,9 @@ export const CardsGridContainer = styled.div`
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    width: 100%;
+    /* width: 100%; */
     /* height: 100%; */
-    border: 1px solid limegreen;
+    /* border: 1px solid limegreen; */
 `
 
 export const WhiteParagraph = styled.p`

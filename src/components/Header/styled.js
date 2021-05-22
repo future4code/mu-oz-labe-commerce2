@@ -15,12 +15,14 @@ export const HeaderBackground = styled.header`
     min-height: 100px;
     position: absolute;
     top: 0;
+    z-index: 99;
 
 `
 
 export const HeaderContainer = styled.div`
     margin: 0 auto;
-    width: 1440px;
+    width: 90%;
+    max-width: 1440px;
     height: 100%;
     ${flexColumn()}  
    

@@ -96,12 +96,12 @@ const arrayDeNaves = [
     }
 ]
 
-class App extends React
-    .Component {
+class App extends React.Component {
 
     state = {
         products: arrayDeNaves,
         carrinho: [],
+        totalCarrinho: 0,
         searchInputArea: '',
         inputFilterMin: '',
         inputFilterMax: Infinity,
@@ -110,26 +110,38 @@ class App extends React
 
     AddToCart = (product) => {
         this.setState({
-            carrinho: [...this.state.carrinho, product]
+            carrinho: [...this.state.carrinho,  product]
         })
+        this.somaValores()
     }
+    
+    somaValores = () => {
+        let accumulator = 0
+        const totalCompra = this.state.carrinho.map((item) => {
+            return item.price * item.quantity
+        }).reduce((accumulator, totalCompra) => totalCompra += accumulator, 0)
+
+        return <span>{totalCompra}</span>
+        //  this.setState({totalCarrinho:totalCompra})
+
+        // this.atualizaTotal(totalCompra)
+    }
+    
+  //     atualizaTotal = (item) => this.setState({ totalCarrinho: item })
 
     delete = (index) => {
-        console.log(index)
         this.setState({
             carrinho: this.state.carrinho.filter((item, i) => {
-                console.log('maximo')
-                if (i !== index) {
-                    return true
-                } else {
-                    console.log('minimo');
-                    return false
-
-                }
-            })
+                    if (i !== index) {
+                        return true
+                    } else {
+                        return false
+                    }
+                })
         })
+        this.somaValores()
     }
-
+    
     add = (index) => {
         this.setState({
             carrinho: this.state.carrinho.map((item, i) => {
@@ -140,25 +152,27 @@ class App extends React
                     }
                 } else
                     return item
-
             })
         })
+        this.somaValores()
     }
-
+  
     sub = (index) => {
+
         this.setState({
             carrinho: this.state.carrinho.map((item, i) => {
-                if (i === index) {
+                if (i === index && item.quantity > 0) {
                     return {
                         ...item,
                         quantity: item.quantity - 1
                     }
-                } else
-                    return item
-            })
+                } else return item
+             })
         })
-    }
-
+    //possível erro da função
+        this.somaValores()
+     }
+      
 
     searchInput = (e) => this.funcToUpdateComponentsByInputSearch(e)
     funcToUpdateComponentsByInputSearch = (e) => {
@@ -199,7 +213,7 @@ class App extends React
             orderByPrice: 'lowToHigh'
         })
     }
-
+  
     render() {
         return (
             <FlexContainer>
@@ -209,9 +223,12 @@ class App extends React
                     add={this.add}
                     sub={this.sub}
                     delete={this.delete}
+                    totalCarrinho={this.state.totalCarrinho}
+                    somaValores={this.somaValores}
                     searchInput={this.searchInput}
                     searchValue={this.state.searchInputArea}
                 />
+                                            
                 <Main
                     products={this.state.products}
                     AddToCart={this.AddToCart}
@@ -231,3 +248,4 @@ class App extends React
 }
 
 export default App;
+
