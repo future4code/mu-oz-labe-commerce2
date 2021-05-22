@@ -38,77 +38,104 @@ const FlexContainer = styled
                 {
                     image: Nave1,
                     title: 'Nave 1',
-                    price: 3.599,
-                    quantity: 0
+                    price: 3599,
+                    quantity: 1
                 }, {
                     image: Nave2,
                     title: 'Nave 2',
-                    price: 3.599,
-                    quantity: 0
+                    price: 3599,
+                    quantity: 1
                 }, {
                     image: Nave3,
                     title: 'Nave 3',
-                    price: 3.599,
-                    quantity: 0
+                    price: 3599,
+                    quantity: 1
                 }, {
                     image: Nave4,
                     title: 'Nave 4',
-                    price: 3.599,
-                    quantity: 0
+                    price: 3599,
+                    quantity: 1
                 }, {
                     image: Nave5,
                     title: 'Nave 5',
-                    price: 3.599,
-                    quantity: 0
+                    price: 3599,
+                    quantity: 1
                 }, {
                     image: Nave6,
                     title: 'Nave 6',
-                    price: 3.599,
-                    quantity: 0
+                    price: 3599,
+                    quantity: 1
                 }, {
                     image: Nave7,
                     title: 'Nave 7',
-                    price: 3.599,
-                    quantity: 0
+                    price: 3599,
+                    quantity: 1
                 }, {
                     image: Nave8,
                     title: 'Nave 8',
-                    price: 3.599,
-                    quantity: 0
+                    price: 3599,
+                    quantity: 1
                 }, {
                     image: Nave9,
                     title: 'Nave 9',
-                    price: 3.599,
-                    quantity: 0
+                    price: 3599,
+                    quantity: 1
                 }, {
                     image: Nave10,
                     title: 'Nave 10',
-                    price: 3.599,
-                    quantity: 0
+                    price: 3599,
+                    quantity: 1
                 }, {
                     image: Nave11,
                     title: 'Nave 11',
-                    price: 3.599,
-                    quantity: 0
+                    price: 3599,
+                    quantity: 1
                 }, {
                     image: Nave12,
                     title: 'Nave 12',
-                    price: 3.599,
-                    quantity: 0
+                    price: 3599,
+                    quantity: 1
                 }
             ],
-            carrinho: []
+            carrinho: [],
+            totalCarrinho: 0
         }
+        
+        somaValores = () => {
+            console.log("AAAAAAAAAAAAA")
+            let accumulator = 0
+            const totalCompra = this.state.carrinho.map((item) => {
+                return item.price * item.quantity
+                
+            }).reduce(( accumulator,totalCompra) => totalCompra += accumulator, 0 )
+
+            return <span>{totalCompra}</span>
+            //  this.setState({totalCarrinho:totalCompra})
+           
+            // this.atualizaTotal(totalCompra)
+
+
+            
+        }
+         atualizaTotal = (item) => this.setState({totalCarrinho: item} )
 
         AddToCart = (product) => {
-          this.setState({ 
-            carrinho: [...this.state.carrinho, product]
-          })
+            this.setState({
+                
+                carrinho: [
+                    ...this.state.carrinho,
+                    product
+                ]
+            })
+            this.somaValores()
         }
         delete = (index) => {
             console.log(index)
             this.setState({
-                carrinho: this.state.carrinho.filter((item, i) => {
+                carrinho: this
+                    .state
+                    .carrinho
+                    .filter((item, i) => {
                         if (i !== index) {
                             return true
                         } else {
@@ -117,6 +144,7 @@ const FlexContainer = styled
                         }
                     })
             })
+            this.somaValores()
         }
         add = (index) => {
 
@@ -136,6 +164,7 @@ const FlexContainer = styled
 
                     })
             })
+            this.somaValores()
         }
         sub = (index) => {
 
@@ -144,7 +173,7 @@ const FlexContainer = styled
                     .state
                     .carrinho
                     .map((item, i) => {
-                        if (i === index) {
+                        if (i === index && item.quantity > 0) {
 
                             return {
                                 ...item,
@@ -152,12 +181,11 @@ const FlexContainer = styled
                             }
                         } else 
                             return item
+
                     })
             })
+            this.somaValores()
         }
-
-        // if (this.state.carrinho - 1 > 0) {     this.setState({         contador:
-        // this.state.contador - 1     }) }
 
         render() {
             return (
@@ -167,7 +195,10 @@ const FlexContainer = styled
                         cart={this.state.carrinho}
                         add={this.add}
                         sub={this.sub}
-                        delete={this.delete}/>
+                        delete={this.delete}
+                        totalCarrinho={this.state.totalCarrinho}
+                        somaValores={this.somaValores}
+                       />
                     <Main products={this.state.products} AddToCart={this.AddToCart}/>
                     <Footer/>
                 </FlexContainer>
@@ -176,3 +207,7 @@ const FlexContainer = styled
     }
 
     export default App;
+
+// SomaValores = (index) => {         this.setState({             totalCarrinho:
+// this.state.carrinho.reduce((accumulator, item) => {                  return
+// accumulator += item.price             )})     } }
