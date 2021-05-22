@@ -13,7 +13,6 @@ export const HeaderBackground = styled.header`
     background-color: ${white};
     width: 100%;
     min-height: 100px;
-    /* height:100%; */
     position: absolute;
     top: 0;
 
@@ -24,6 +23,7 @@ export const HeaderContainer = styled.div`
     width: 1440px;
     height: 100%;
     ${flexColumn()}  
+   
 `
 
 export const HeaderItems = styled.div`
