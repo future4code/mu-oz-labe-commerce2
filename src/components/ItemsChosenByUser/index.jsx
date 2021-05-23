@@ -51,7 +51,7 @@ export default class CartList extends React.Component {
                            />
                         </Nave>
                         <ContainerNomeDescricao>
-                           <Nome>{item.title}</Nome>
+                           <Nome>{item.title} - R$ {item.price},00</Nome>
                            <Paragrafo>{item.description}</Paragrafo>
                         </ContainerNomeDescricao>
                         <ContainerContador>
@@ -80,7 +80,7 @@ export default class CartList extends React.Component {
                <ContainerTotal>
                   <div>
                      <H1Total>Total</H1Total>
-                     <H3Valor> R$ {this.props.somaValores()}
+                     <H3Valor> R$ {this.props.somaValores()},00
                      </H3Valor>
                   </div>
                   <Finalizar onClick={this.props.finishPopUp}>Finalizar Compra</Finalizar>

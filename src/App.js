@@ -151,6 +151,12 @@ class App extends React.Component {
         this.setState({
             wasAddedToCart: controller
         })
+
+        setTimeout(() => { 
+            this.setState({
+                wasAddedToCart: false
+            }) 
+        }, 2000);
     }
 
     closeCartMessage = () => {
@@ -307,7 +313,7 @@ class App extends React.Component {
 
                 {this.state.wasAddedToCart && 
                     <DivAddedToCart>
-                        Produto adicionado ao cart
+                        Produto adicionado ao carrinho
                         <CloseMessage onClick={this.closeCartMessage}>
                             x
                         </CloseMessage>
