@@ -2,8 +2,10 @@ import React from 'react';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import CompraFinalizada from './components/CompraFinalizada'
+
 import GlobalStyle from './GlobalStyle';
-import {DivAddedToCart, CloseMessage} from './styled';
+import {FlexContainer, DivAddedToCart, CloseMessage} from './styled';
 
 import Nave1 from './img/nave-01.png'
 import Nave2 from './img/nave-02.png'
@@ -19,18 +21,6 @@ import Nave11 from './img/nave-011.png'
 import Nave12 from './img/nave-012.png'
 
 
-
-import styled from 'styled-components'
-
-const FlexContainer = styled.div`
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-`
 
 const arrayDeNaves = [
     {
@@ -100,37 +90,36 @@ class App extends React.Component {
 
     state = {
         products: arrayDeNaves,
-        carrinho: [],
-        totalCarrinho: 0,
+        cart: [],
         searchInputArea: '',
         inputFilterMin: '',
         inputFilterMax: Infinity,
         orderByPrice: 'default',
-        wasAddedToCart: false
+        wasAddedToCart: false,
+        successPopUp: false,
+        isCartOpen: false
     }
  
-    cleanCart = () => {
-        this.setState({carrinho: []})
-    }
+
 
     AddToCart = (product) => {
         let alreadyExists = false
 
-        if (this.state.carrinho.length === 0) {
+        if (this.state.cart.length === 0) {
             this.setState({
-                carrinho: [...this.state.carrinho,  product]
+                cart: [...this.state.cart,  product]
             })
         }
 
-        for (let i = 0; i < this.state.carrinho.length; i++){
+        for (let i = 0; i < this.state.cart.length; i++){
 
-            if (this.state.carrinho[i].title === product.title){
-                const carrinhoCopy = [...this.state.carrinho]
+            if (this.state.cart[i].title === product.title){
+                const cartCopy = [...this.state.cart]
 
-                carrinhoCopy[i] = {...product, quantity: carrinhoCopy[i].quantity + 1}
+                cartCopy[i] = {...product, quantity: cartCopy[i].quantity + 1}
 
                 this.setState({
-                    carrinho: [...carrinhoCopy]
+                    cart: [...cartCopy]
                 })
                 alreadyExists = true
             }
@@ -138,18 +127,17 @@ class App extends React.Component {
 
         if (!alreadyExists) {
             this.setState({
-                carrinho: [...this.state.carrinho,  product]
+                cart: [...this.state.cart,  product]
             })
             alreadyExists = false
         }
 
-        this.somaValores()
-        this.addedToCartMessage()
+        this.addedToCartMessage(true)
     }
     
-    addedToCartMessage = () => {
+    addedToCartMessage = (controller) => {
         this.setState({
-            wasAddedToCart: true
+            wasAddedToCart: controller
         })
     }
 
@@ -159,23 +147,40 @@ class App extends React.Component {
         })
     }
 
+    finishPopUp = () => {
+        this.setState({
+            successPopUp: true
+        })
+    }
+
+    cleanCart = () => {
+        this.setState({
+            successPopUp: false,
+            cart: [],
+            isCartOpen: false
+        })
+    }
+
+    openCartButton = () => {
+        this.setState({ 
+            isCartOpen: !this.state.isCartOpen 
+        })
+
+        this.addedToCartMessage(false)
+    }
+
     somaValores = () => {
-        let accumulator = 0
-        const totalCompra = this.state.carrinho.map((item) => {
+        const totalCompra = this.state.cart.map((item) => {
             return item.price * item.quantity
         }).reduce((accumulator, totalCompra) => totalCompra += accumulator, 0)
 
         return <span>{totalCompra}</span>
-        //  this.setState({totalCarrinho:totalCompra})
-
-        // this.atualizaTotal(totalCompra)
     }
     
-  //     atualizaTotal = (item) => this.setState({ totalCarrinho: item })
 
     delete = (index) => {
         this.setState({
-            carrinho: this.state.carrinho.filter((item, i) => {
+            cart: this.state.cart.filter((item, i) => {
                     if (i !== index) {
                         return true
                     } else {
@@ -183,12 +188,11 @@ class App extends React.Component {
                     }
                 })
         })
-        this.somaValores()
     }
     
     add = (index) => {
         this.setState({
-            carrinho: this.state.carrinho.map((item, i) => {
+            cart: this.state.cart.map((item, i) => {
                 if (i === index) {
                     return {
                         ...item,
@@ -198,31 +202,21 @@ class App extends React.Component {
                     return item
             })
         })
-        this.somaValores()
     }
   
     sub = (index) => {
 
         this.setState({
-            carrinho: this.state.carrinho.map((item, i) => {
+            cart: this.state.cart.map((item, i) => {
                 if (i === index && item.quantity > 1) {
                     return {
                         ...item,
                         quantity: item.quantity - 1
                     }
                 } else return item
-             })
-             
-        }
-        
-        )
-    //possível erro da função
-        this.somaValores()
-        
-        
-        
-       
-     }
+            })
+        })
+    }
      
   
       
@@ -272,15 +266,18 @@ class App extends React.Component {
             <FlexContainer>
                 <GlobalStyle />
                 <Header
-                    cart={this.state.carrinho}
+                    cart={this.state.cart}
                     add={this.add}
                     sub={this.sub}
                     delete={this.delete}
-                    totalCarrinho={this.state.totalCarrinho}
+                    totalcart={this.state.totalcart}
                     somaValores={this.somaValores}
                     searchInput={this.searchInput}
                     searchValue={this.state.searchInputArea}
                     cleanCart={this.cleanCart}
+                    finishPopUp={this.finishPopUp}
+                    openCartButton={this.openCartButton}
+                    isCartOpen={this.state.isCartOpen}
                 />
                                             
                 <Main
@@ -296,12 +293,20 @@ class App extends React.Component {
                     orderByPrice={this.state.orderByPrice}
                 />
 
-                {this.state.wasAddedToCart && <DivAddedToCart>
-                    <CloseMessage onClick={this.closeCartMessage}>
-                        x
-                    </CloseMessage>
-                    Produto adicionado ao carrinho
-                </DivAddedToCart>
+                {this.state.wasAddedToCart && 
+                    <DivAddedToCart>
+                        Produto adicionado ao cart
+                        <CloseMessage onClick={this.closeCartMessage}>
+                            x
+                        </CloseMessage>
+                    </DivAddedToCart>
+                }
+
+                {this.state.successPopUp && 
+                    <CompraFinalizada 
+                    finalizarCompra={this.finalizarCompra}
+                    cleanCart={this.cleanCart} 
+                    />
                 }
                 
                 <Footer />

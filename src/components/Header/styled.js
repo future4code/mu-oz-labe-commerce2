@@ -23,7 +23,7 @@ export const HeaderBackground = styled.div`
     background-color: ${white};
     width: 100%;
     min-height: 100px;
-    z-index: 99;
+    /* z-index: 99; */
 
 `
 
@@ -41,7 +41,7 @@ export const HeaderItems = styled.div`
     width: 100%;
     margin: 10px 0;
     ${flexRow()}
-    z-index: 99;
+    /* z-index: 99; */
    
 `
 

@@ -1,7 +1,5 @@
 import React from 'react'
 
-import CompraFinalizada from '../CompraFinalizada'
-
 import {
    CartContainer,
    ContainerItem,
@@ -29,23 +27,11 @@ import Plus from '../../icons/plus.svg'
 import Minus from '../../icons/minus.svg'
 
 
-export default class ItensCarrinho extends React.Component {
-   state = {
-      licou: false
-   }
+export default class CartList extends React.Component {
 
-   finalizarCompra = (cleanCart) => {
-      if (cleanCart === 'cleanCart') {
-         this.props.cleanCart()
-      }
-      this.setState
-         ({ licou: !this.state.licou })
-
-   }
    render() {
 
       return (
-
          <CartContainer>
             { this.props.cart.map(
                (item, index) => {
@@ -99,24 +85,12 @@ export default class ItensCarrinho extends React.Component {
                      <H3Valor> R$ {this.props.somaValores()}
                      </H3Valor>
                   </div>
-                  <Finalizar onClick={this.finalizarCompra}>Finalizar Compra</Finalizar>
+                  <Finalizar onClick={this.props.finishPopUp}>Finalizar Compra</Finalizar>
                </ContainerTotal>
             </ContainerCompra>
-            
-            {this.state.licou && <CompraFinalizada finalizarCompra={this.finalizarCompra}
-               cleanCart={this.props.cleanCart} />}
-
          </CartContainer>
 
       )
 
    }
 }
-
-// 
-
-// {this.props.cart.reduce((accumulator, item)=>{
-
-//    return accumulator += item.price
-// })}]
-// {this.somaDosProdutos}

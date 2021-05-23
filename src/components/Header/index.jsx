@@ -16,7 +16,7 @@ import {
 } from './styled'
 
 import Logo from '../../icons/Logo.svg'
-import Carrinho from '../../icons/Carrinho.svg'
+import CartIcon from '../../icons/Carrinho.svg'
 import Lupa from '../../icons/Lupa.svg'
 import UpArrow from '../../icons/up-arrow.svg'
 
@@ -35,7 +35,7 @@ class Header extends React.Component {
                 <HeaderBackground>
                     <HeaderContainer>
                         <HeaderItems>
-                            <LogoHeader src={Logo} alt="Logo Space eComerce" />
+                            <LogoHeader src={Logo} alt="Logo Space eCommerce" />
                             <DivSearch>
                                 <InputSearch
                                     type="text"
@@ -47,14 +47,14 @@ class Header extends React.Component {
                                 <LupaIcon src={Lupa} alt="" srcset="" />
                             </DivSearch>
                             <ButtonCart
-                                onClick={this.clickHeaderButton}>
+                                onClick={this.props.openCartButton}>
                                 <img
-                                    src={this.state.buttonHasClicked ?
+                                    src={this.props.isCartOpen ?
                                         UpArrow :
-                                        Carrinho
+                                        CartIcon
                                 }
                                 alt="Carrinho de compras" />
-                                {this.state.buttonHasClicked || 
+                                {this.props.isCartOpen || 
                                 <CartCounter>{this.props.cart.length}</CartCounter>
                                 }
                             </ButtonCart>
@@ -62,15 +62,18 @@ class Header extends React.Component {
                     </HeaderContainer>
 
                 </HeaderBackground>
-                {this.state.buttonHasClicked && <ItemsChosenByUser
-                    cart={this.props.cart}
-                    add={this.props.add}
-                    sub={this.props.sub}
-                    delete={this.props.delete}
-                    totalCarrinho={this.props.totalCarrinho}
-                    somaValores={this.props.somaValores}
-                    cleanCart={this.props.cleanCart}
-                />}
+                
+                {this.props.isCartOpen && 
+                    <ItemsChosenByUser
+                        cart={this.props.cart}
+                        add={this.props.add}
+                        sub={this.props.sub}
+                        delete={this.props.delete}
+                        somaValores={this.props.somaValores}
+                        cleanCart={this.props.cleanCart}
+                        finishPopUp={this.props.finishPopUp}
+                    />
+                }
             </HeaderTag>
         )
     }
