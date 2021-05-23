@@ -2,12 +2,10 @@ import React from 'react'
 
 import {CardItemContainer, CardImageContainer, CardImage, CardContentContainer, CardTitle, CardPrice, CardButton} from './styled'
 
-class CardItem extends React.Component{
+export default class CardItem extends React.Component{
 
     render(){
-
         return (
-
             <CardItemContainer>
                 <CardImageContainer>
                     <CardImage src={this.props.product.image}></CardImage>
@@ -15,11 +13,9 @@ class CardItem extends React.Component{
                 <CardContentContainer>
                     <CardTitle>{this.props.product.title}</CardTitle>
                     <CardPrice>R$ {this.props.product.price},00</CardPrice>
-                    <CardButton onClick={() => this.props.AddToCart(this.props.product)}>Adicionar</CardButton>
+                    <CardButton onClick={() => this.props.addToCart(this.props.product)}>Adicionar</CardButton>
                 </CardContentContainer>
             </CardItemContainer>
         )
     }
 }
-
-export default CardItem

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-
 import { flexColumn, white, black, flexRow } from '../../GlobalStyle'
 
 export const FilterToPriceContainer = styled.div`
@@ -46,7 +45,6 @@ export const InputFilterToPrice = styled.input`
     color: ${black};
     border: none;
     border-radius: 5px;
-    /* width: 140px; */
     width: 46%;
     min-width: 50px;
     height: 36px;

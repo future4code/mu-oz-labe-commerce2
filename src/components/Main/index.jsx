@@ -2,12 +2,9 @@ import React from 'react'
 import CardsGrid from '../CardsGrid'
 import FilterToPrice from '../FilterToPrice'
 
-import {
-    Main,
+import { Main } from './styled'
 
-} from './styled'
-
-class MainContainer extends React.Component {
+export default class MainContainer extends React.Component {
 
     render() {
         return (
@@ -22,7 +19,7 @@ class MainContainer extends React.Component {
                 />
                 <CardsGrid
                     products={this.props.products}
-                    AddToCart={this.props.AddToCart}
+                    addToCart={this.props.addToCart}
                     searchInputArea={this.props.searchInputArea}
                     inputFilterMax={this.props.inputFilterMax}
                     inputFilterMin={this.props.inputFilterMin}
@@ -32,5 +29,3 @@ class MainContainer extends React.Component {
         )
     }
 }
-
-export default MainContainer

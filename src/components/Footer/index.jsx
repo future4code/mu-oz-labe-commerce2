@@ -2,7 +2,7 @@ import React from 'react'
 import { FooterBackground, Text, ContainerFooter, R, G, B } from './styled'
 
 
-class Footer extends React.Component {
+export default class Footer extends React.Component {
 
     render() {
 
@@ -24,5 +24,3 @@ class Footer extends React.Component {
         )
     }
 }
-
-export default Footer
