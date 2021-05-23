@@ -3,6 +3,7 @@ import ItemsChosenByUser from '../ItemsChosenByUser'
 
 
 import {
+    HeaderTag,
     HeaderBackground,
     HeaderContainer,
     HeaderItems,
@@ -11,6 +12,7 @@ import {
     InputSearch,
     LupaIcon,
     ButtonCart,
+    CartCounter
 } from './styled'
 
 import Logo from '../../icons/Logo.svg'
@@ -29,42 +31,47 @@ class Header extends React.Component {
 
     render() {
         return (
-            <HeaderBackground>
-                <HeaderContainer>
-                    <HeaderItems>
-                        <LogoHeader src={Logo} alt="Logo Space eComerce" />
-                        <DivSearch>
-                            <InputSearch
-                                type="text"
-                                name="Digite os items"
-                                placeholder="Digite sua busca..."
-                                onChange={(e) => this.props.searchInput(e)}
-                                value={this.props.searchInputArea}
-                            />
-                            <LupaIcon src={Lupa} alt="" srcset="" />
-                        </DivSearch>
-                        <ButtonCart 
-                        onClick={this.clickHeaderButton}>
-                            <img 
-                            src={this.state.buttonHasClicked ? 
-                            UpArrow :
-                            Carrinho
-                            } 
-                            alt="Carrinho de compras" />
-                        </ButtonCart>
-                    </HeaderItems>
-                    {this.state.buttonHasClicked && <ItemsChosenByUser 
-                    cart={this.props.cart} 
-                    add={this.props.add} 
-                    sub={this.props.sub} 
-                    delete={this.props.delete} 
+            <HeaderTag>
+                <HeaderBackground>
+                    <HeaderContainer>
+                        <HeaderItems>
+                            <LogoHeader src={Logo} alt="Logo Space eComerce" />
+                            <DivSearch>
+                                <InputSearch
+                                    type="text"
+                                    name="Digite os items"
+                                    placeholder="Digite sua busca..."
+                                    onChange={(e) => this.props.searchInput(e)}
+                                    value={this.props.searchInputArea}
+                                />
+                                <LupaIcon src={Lupa} alt="" srcset="" />
+                            </DivSearch>
+                            <ButtonCart
+                                onClick={this.clickHeaderButton}>
+                                <img
+                                    src={this.state.buttonHasClicked ?
+                                        UpArrow :
+                                        Carrinho
+                                }
+                                alt="Carrinho de compras" />
+                                {this.state.buttonHasClicked || 
+                                <CartCounter>{this.props.cart.length}</CartCounter>
+                                }
+                            </ButtonCart>
+                        </HeaderItems>
+                    </HeaderContainer>
+
+                </HeaderBackground>
+                {this.state.buttonHasClicked && <ItemsChosenByUser
+                    cart={this.props.cart}
+                    add={this.props.add}
+                    sub={this.props.sub}
+                    delete={this.props.delete}
                     totalCarrinho={this.props.totalCarrinho}
                     somaValores={this.props.somaValores}
                     cleanCart={this.props.cleanCart}
-                     />}
-                </HeaderContainer>
-                
-            </HeaderBackground>
+                />}
+            </HeaderTag>
         )
     }
 }

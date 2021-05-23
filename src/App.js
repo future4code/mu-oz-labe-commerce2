@@ -114,9 +114,35 @@ class App extends React.Component {
     }
 
     AddToCart = (product) => {
-        this.setState({
-            carrinho: [...this.state.carrinho,  product]
-        })
+        let alreadyExists = false
+
+        if (this.state.carrinho.length === 0) {
+            this.setState({
+                carrinho: [...this.state.carrinho,  product]
+            })
+        }
+
+        for (let i = 0; i < this.state.carrinho.length; i++){
+
+            if (this.state.carrinho[i].title === product.title){
+                const carrinhoCopy = [...this.state.carrinho]
+
+                carrinhoCopy[i] = {...product, quantity: carrinhoCopy[i].quantity + 1}
+
+                this.setState({
+                    carrinho: [...carrinhoCopy]
+                })
+                alreadyExists = true
+            }
+        }
+
+        if (!alreadyExists) {
+            this.setState({
+                carrinho: [...this.state.carrinho,  product]
+            })
+            alreadyExists = false
+        }
+
         this.somaValores()
         this.addedToCartMessage()
     }

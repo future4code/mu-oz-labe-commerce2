@@ -8,14 +8,21 @@ import {
     backGroundBlack
 } from '../../GlobalStyle'
 
-export const HeaderBackground = styled.header`
+export const HeaderTag = styled.header`
 
-    /* background-color: ${white}; */
-    background-color: ${white};
     width: 100%;
     min-height: 100px;
     position: absolute;
     top: 0;
+    z-index: 99;
+
+
+`
+export const HeaderBackground = styled.div`
+
+    background-color: ${white};
+    width: 100%;
+    min-height: 100px;
     z-index: 99;
 
 `
@@ -26,9 +33,7 @@ export const HeaderContainer = styled.div`
     max-width: 1440px;
     height: 100%;
     ${flexColumn()}  
-    
-    
-    
+    z-index: 99;
    
 `
 
@@ -36,6 +41,7 @@ export const HeaderItems = styled.div`
     width: 100%;
     margin: 10px 0;
     ${flexRow()}
+    z-index: 99;
    
 `
 
@@ -75,4 +81,13 @@ export const ButtonCart = styled.button`
     border: none;
     outline: none;
     cursor: pointer;
+    position: relative;
+
+`
+export const CartCounter = styled.div`
+    position: absolute;
+    right: 21px;
+    top: 10px;
+    color: #FFF;
+
 `
