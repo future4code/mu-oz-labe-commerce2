@@ -20,7 +20,7 @@ export const CardImageContainer = styled.div`
     justify-content: center;
     align-items: center;
     height: 350px;
-    min-height: 300px;
+    min-height: 275px;
     width: 100%;
 `
 export const CardImage = styled.img`
