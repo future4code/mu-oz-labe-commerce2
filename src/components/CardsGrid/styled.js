@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-
 import {white} from '../../GlobalStyle'
 
 export const CardsGridContainer = styled.div`

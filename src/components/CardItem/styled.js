@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-
-import { white, backGroundBlack, black } from '../../GlobalStyle'
+import { white, backgroundBlack, black } from '../../GlobalStyle'
 
 export const CardItemContainer = styled.div`
     display:flex;
@@ -13,6 +12,10 @@ export const CardItemContainer = styled.div`
     padding: 10px;
     background-color: ${white};
     border-radius: 10px;
+
+    @media only screen and (max-width: 767px){
+       min-width: 200px;
+   }
 `
 export const CardImageContainer = styled.div`
     background-image: url('./star.png');
@@ -66,7 +69,7 @@ export const CardPrice = styled.h3`
 `
 
 export const CardButton = styled.button`
-    background-color: ${backGroundBlack};
+    background-color: ${backgroundBlack};
     color: ${white};
     border: none;
     border-radius: 5px;

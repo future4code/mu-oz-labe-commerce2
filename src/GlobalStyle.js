@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-export const backGroundBlack = '#1c1c1c'
+export const backgroundBlack = '#1c1c1c'
 export const black = '#272727'
 export const white = '#EBEBEB'
 
@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
         margin:0;
         padding: 0;
         box-sizing: border-box;
-        background-color: ${backGroundBlack};
+        background-color: ${backgroundBlack};
         font-family: 'Ropa Sans', sans-serif;
         color: ${white};
     }

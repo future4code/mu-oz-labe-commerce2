@@ -9,10 +9,9 @@ import {
     DivInputFilterToPrice
 } from './styled'
 
-class FilterToPrice extends React.Component {
+export default class FilterToPrice extends React.Component {
 
     render() {
-
         return (
             <FilterToPriceContainer>
                 <FilterToPriceGroup>
@@ -29,5 +28,3 @@ class FilterToPrice extends React.Component {
         )
     }
 }
-
-export default FilterToPrice

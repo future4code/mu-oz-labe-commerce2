@@ -4,7 +4,7 @@ import { Titulo, ContainerFinal, Paragrafo, CheckIcon, Delete } from './styled'
 import DeleteIcon from '../../icons/x.svg'
 
 
-export default class Finalizada extends React.Component {
+export default class PopUpComponent extends React.Component {
 
     render() {
 

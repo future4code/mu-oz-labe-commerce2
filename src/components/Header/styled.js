@@ -4,7 +4,7 @@ import {
     white,
     flexColumn,
     flexRow,
-    backGroundBlack
+    backgroundBlack
 } from '../../GlobalStyle'
 
 export const HeaderTag = styled.header`
@@ -23,7 +23,6 @@ export const HeaderBackground = styled.div`
     width: 100%;
     min-height: 100px;
 
-
 `
 
 export const HeaderContainer = styled.div`
@@ -34,12 +33,21 @@ export const HeaderContainer = styled.div`
     ${flexColumn()}  
     z-index: 99;
    
+   @media only screen and (max-width: 767px){
+       flex-direction: row;
+       flex-wrap: wrap;
+   }
 `
 
 export const HeaderItems = styled.div`
     width: 100%;
     margin: 10px 0;
     ${flexRow()}
+
+    @media only screen and (max-width: 767px){
+       flex-direction: row;
+       flex-wrap: wrap;
+    }
    
 `
 
@@ -53,6 +61,10 @@ export const DivSearch = styled.div`
     margin-right: 28px;
     position: relative;
     ${flexRow()}
+
+    @media only screen and (max-width: 767px){
+        margin: 0;
+    }
 `
 
 export const InputSearch = styled.input`
@@ -60,7 +72,7 @@ export const InputSearch = styled.input`
     height:60px;
     border-radius: 10px;
     border: none;
-    background: ${backGroundBlack};
+    background: ${backgroundBlack};
     outline: none;
     color: ${white};
     font-size: 16px;

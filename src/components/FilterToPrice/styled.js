@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-
 import { flexColumn, white, black, flexRow } from '../../GlobalStyle'
 
 export const FilterToPriceContainer = styled.div`

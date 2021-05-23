@@ -3,8 +3,7 @@ import CardItem from '../CardItem'
 
 import { CardsGridContainer, NotFound } from './styled'
 
-class CardsGrid extends React.Component {
-
+export default class CardsGrid extends React.Component {
 
     render() {
         const filter = this.props.products
@@ -29,23 +28,18 @@ class CardsGrid extends React.Component {
                             return -1
                         }
                         return 0
-
                     case 'default':
-
                         break;
                 }
-
             })
 
-
         const productsList = filter.map((product, index) => {
-
             return (
                 <CardItem
                     key={index}
                     index={index}
                     product={product}
-                    AddToCart={this.props.AddToCart}
+                    addToCart={this.props.addToCart}
                 />
             )
         })
@@ -57,5 +51,3 @@ class CardsGrid extends React.Component {
         )
     }
 }
-
-export default CardsGrid
