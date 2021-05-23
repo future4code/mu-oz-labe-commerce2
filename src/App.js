@@ -112,23 +112,17 @@ class App extends React.Component {
         isCartOpen: false
     }
 
-
     componentDidMount() {
         if (localStorage.getItem("cart")) {
             const cartString = localStorage.getItem("cart")
             const cartObject = JSON.parse(cartString)
             this.setState({ cart: cartObject })
-        }
-      
+        }      
     };
 
     componentDidUpdate() {
         localStorage.setItem("cart", JSON.stringify(this.state.cart))
       };
-
-
-
-
 
     AddToCart = (product) => {
         let alreadyExists = false
