@@ -16,6 +16,8 @@ import {
 import Logo from '../../icons/Logo.svg'
 import Carrinho from '../../icons/Carrinho.svg'
 import Lupa from '../../icons/Lupa.svg'
+import UpArrow from '../../icons/up-arrow.svg'
+
 
 class Header extends React.Component {
     state = {
@@ -41,7 +43,15 @@ class Header extends React.Component {
                             />
                             <LupaIcon src={Lupa} alt="" srcset="" />
                         </DivSearch>
-                        <ButtonCart onClick={this.clickHeaderButton}><img src={Carrinho} alt="Carrinho de compras" /></ButtonCart>
+                        <ButtonCart 
+                        onClick={this.clickHeaderButton}>
+                            <img 
+                            src={this.state.buttonHasClicked ? 
+                            UpArrow :
+                            Carrinho
+                            } 
+                            alt="Carrinho de compras" />
+                        </ButtonCart>
                     </HeaderItems>
                     {this.state.buttonHasClicked && <ItemsChosenByUser 
                     cart={this.props.cart} 

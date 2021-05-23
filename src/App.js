@@ -3,6 +3,7 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import GlobalStyle from './GlobalStyle';
+import {DivAddedToCart, CloseMessage} from './styled';
 
 import Nave1 from './img/nave-01.png'
 import Nave2 from './img/nave-02.png'
@@ -105,6 +106,7 @@ class App extends React.Component {
         inputFilterMin: '',
         inputFilterMax: Infinity,
         orderByPrice: 'default',
+        wasAddedToCart: false
     }
  
     cleanCart = () => {
@@ -116,8 +118,21 @@ class App extends React.Component {
             carrinho: [...this.state.carrinho,  product]
         })
         this.somaValores()
+        this.addedToCartMessage()
     }
     
+    addedToCartMessage = () => {
+        this.setState({
+            wasAddedToCart: true
+        })
+    }
+
+    closeCartMessage = () => {
+        this.setState({
+            wasAddedToCart: false
+        })
+    }
+
     somaValores = () => {
         let accumulator = 0
         const totalCompra = this.state.carrinho.map((item) => {
@@ -254,6 +269,15 @@ class App extends React.Component {
                     minorPrice={this.minorPrice}
                     orderByPrice={this.state.orderByPrice}
                 />
+
+                {this.state.wasAddedToCart && <DivAddedToCart>
+                    <CloseMessage onClick={this.closeCartMessage}>
+                        x
+                    </CloseMessage>
+                    Produto adicionado ao carrinho
+                </DivAddedToCart>
+                }
+                
                 <Footer />
             </FlexContainer>
         );

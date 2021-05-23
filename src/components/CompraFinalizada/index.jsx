@@ -26,7 +26,7 @@ export default class Finalizada extends React.Component {
                     <p></p>
                <Titulo> Compra Finalizada! </Titulo>
                <Paragrafo>Muito obrigado pela preferência! <br />  
-                Volte sempre <i class="em em-rocket" aria-role="presentation" aria-label="ROCKET"></i></Paragrafo>
+                Volte sempre <i className="em em-rocket" aria-role="presentation" aria-label="ROCKET"></i></Paragrafo>
                 <CheckIcon src={Check} alt="check" />
                </ContainerFinal>
             </div>
