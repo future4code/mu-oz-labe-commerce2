@@ -25,21 +25,8 @@ export const CartContainer = styled.div`
         }
     }
 `
-export const CartAnimation = styled.div`
-    /* animation: bounce 1s ease-in forwards;
 
-    @keyframes bounce {
-        0% {
-            transform: translateY(-200px);
-        }
-        100% {
-            transform: translateY(0px);
-        }
-    } */
-`
-
-export const ContainerItem = styled(CartAnimation)`
-/* border-top: 1px rgba(39, 39, 39, 1) solid; */
+export const ContainerItem = styled.div`
     display:flex;
     align-items:center;
     margin: 0 auto;
@@ -75,7 +62,6 @@ export const Nome = styled.h1`
 
 export const ContainerContador = styled.div`
     width:20%;
-    /* margin-left:30%; */
     letter-spacing: 0.1em;
 `
 export const PQuantidade = styled.p`
@@ -114,8 +100,8 @@ export const ContainerQuantity = styled.div`
 
 
 
-export const ContainerCompra = styled(CartAnimation)`
-/* border: 3px solid red; */
+export const ContainerCompra = styled.div`
+
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -124,7 +110,6 @@ export const ContainerCompra = styled(CartAnimation)`
     margin: 0 auto;
     max-width: 1440px;
     box-shadow: 0 1em 1em 0 rgb(36 36 36 / 40%);
-    /* box-shadow:0  1em 1em  0 rgba(36, 36, 36, 0.404); */
 
 `
 

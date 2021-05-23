@@ -15,7 +15,6 @@ export const CardItemContainer = styled.div`
     border-radius: 10px;
 `
 export const CardImageContainer = styled.div`
-    /* background-color: #000; */
     background-image: url('./star.png');
     display: flex;
     justify-content: center;
@@ -38,20 +37,16 @@ export const CardImage = styled.img`
 
     @keyframes float{
         0%, 100%{
-            /* box-shadow:0 5px 15px 0 rgba(0,0,0,.6); */
             transform:  rotate(0deg);
         }
         25%{
-            /* box-shadow:0 25px 15px 0 rgba(0,0,0,.2); */
             transform: translatey(-10px) rotate(15deg);
         }
 
         75%{
-            /* box-shadow:0 25px 15px 0 rgba(0,0,0,.2); */
             transform: translatey(10px) rotate(-15deg);
         }
     }
-    /* transform: rotate(45deg); */
 `
 
 export const CardContentContainer = styled.div`
@@ -90,6 +85,5 @@ export const CardButton = styled.button`
         cursor: pointer;
         outline: 0;
         background-color: #9a0000;
-        /* transition: 0.08s ease-in; */
     }
 `

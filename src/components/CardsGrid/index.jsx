@@ -1,7 +1,7 @@
 import React from 'react'
 import CardItem from '../CardItem'
 
-import { CardsGridContainer } from './styled'
+import { CardsGridContainer, NotFound } from './styled'
 
 class CardsGrid extends React.Component {
 
@@ -52,7 +52,7 @@ class CardsGrid extends React.Component {
 
         return (
             <CardsGridContainer>
-                { productsList}
+                { productsList.length ? productsList : <NotFound>Produto não encontrado :(</NotFound> }
             </CardsGridContainer >
         )
     }

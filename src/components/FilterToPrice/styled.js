@@ -46,7 +46,6 @@ export const InputFilterToPrice = styled.input`
     color: ${black};
     border: none;
     border-radius: 5px;
-    /* width: 140px; */
     width: 46%;
     min-width: 50px;
     height: 36px;
