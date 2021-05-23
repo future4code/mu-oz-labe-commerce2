@@ -71,10 +71,6 @@ export const Nome = styled.h1`
     color:rgba(39, 39, 39, 1);
     font-size:42px;
 `
-export const Paragrafo = styled.p`
-    letter-spacing: 0.1em;
-    color:rgba(39, 39, 39, 1);
-`
 
 export const ContainerContador = styled.div`
     width:20%;
