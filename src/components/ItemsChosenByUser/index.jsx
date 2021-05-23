@@ -29,9 +29,16 @@ export default class ItensCarrinho extends React.Component {
     state = {
       Clicou: false
   }
-      botaoDeFinalizarCompra = () => this.setState({ Clicou: !this.state.Clicou }) 
-     
       
+     
+    finalizarCompra = (cleanCart) =>{
+      if(cleanCart === 'cleanCart'){
+          this.props.cleanCart()
+      }
+      this.setState
+      ({ Clicou: !this.state.Clicou })
+        
+    } 
       render() {
         
        return (
@@ -82,10 +89,11 @@ export default class ItensCarrinho extends React.Component {
                      <H3Valor> R$ {this.props.somaValores()}
                      </H3Valor>
                   </div>
-                  <Finalizar onClick={this.botaoDeFinalizarCompra}>Finalizar Compra</Finalizar>
+                  <Finalizar onClick={this.finalizarCompra}>Finalizar Compra</Finalizar>
                </ContainerTotal>
             </ContainerCompra>
-            {this.state.Clicou && <CompraFinalizada botãoFinalizarClicado={this.state.Clicou}/> }
+               {this.state.Clicou && <CompraFinalizada finalizarCompra={this.finalizarCompra}
+                cleanCart={this.props.cleanCart}/> }
          
          </>
 

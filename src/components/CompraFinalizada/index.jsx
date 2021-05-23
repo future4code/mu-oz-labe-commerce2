@@ -11,12 +11,8 @@ import {Delete} from './styled'
 
 
 export default class Finalizada extends React.Component {
-    state = {
-        botãoFinalizarClicado: this.props.botãoFinalizarClicado
-    }
+  
 
-    finalizarCompra = () => this.setState
-    ({ botãoFinalizarClicado: !this.state.botãoFinalizarClicado })
     
     
    
@@ -26,9 +22,9 @@ export default class Finalizada extends React.Component {
             <div>
               
                 <ContainerFinal>
-                    <Delete src={DeleteIcon} alt="" onClick={this.finalizarCompra}  />
+                    <Delete src={DeleteIcon} alt="" onClick={() => this.props.finalizarCompra("cleanCart")}  />
                     <p></p>
-               <Titulo> {this.state.botãoFinalizarClicado ? "FUNCIONOU" : "eu estou com vontade de morrer"} </Titulo>
+               <Titulo> Compra Finalizada! </Titulo>
                <Paragrafo>Muito obrigado pela preferência! <br />  
                 Volte sempre <i class="em em-rocket" aria-role="presentation" aria-label="ROCKET"></i></Paragrafo>
                 <CheckIcon src={Check} alt="check" />
@@ -37,3 +33,4 @@ export default class Finalizada extends React.Component {
         )
     }
 }
+// {this.state.botãoFinalizarClicado ? "FUNCIONOU" : "eu estou com vontade de morrer"}

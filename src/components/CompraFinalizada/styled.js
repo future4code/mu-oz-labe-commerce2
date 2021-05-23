@@ -18,7 +18,9 @@ text-align: justify;
 export const ContainerFinal = styled.div`
 width: 35vw;
 z-index: 99;
-position: absolute;
+position: fixed;
+top:20vh;
+left:35vw;
 background-color:rgba(235, 235, 235, 1);
 height: 70vh;
 border-radius:10px;

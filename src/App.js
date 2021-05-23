@@ -107,7 +107,9 @@ class App extends React.Component {
         orderByPrice: 'default',
     }
  
-
+    cleanCart = () => {
+        this.setState({carrinho: []})
+    }
 
     AddToCart = (product) => {
         this.setState({
@@ -237,6 +239,7 @@ class App extends React.Component {
                     somaValores={this.somaValores}
                     searchInput={this.searchInput}
                     searchValue={this.state.searchInputArea}
+                    cleanCart={this.cleanCart}
                 />
                                             
                 <Main

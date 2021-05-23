@@ -50,6 +50,7 @@ class Header extends React.Component {
                     delete={this.props.delete} 
                     totalCarrinho={this.props.totalCarrinho}
                     somaValores={this.props.somaValores}
+                    cleanCart={this.props.cleanCart}
                      />}
                 </HeaderContainer>
                 
