@@ -11,10 +11,10 @@ export const FilterToPriceGroup = styled.div`
     ${flexColumn()}
     align-items: flex-start;
     justify-content: flex-start;
-    flex-grow: 1;
     position: -webkit-sticky;
     position: sticky;
     top: 10px;
+    width: 98%;
    
 `
 
@@ -22,13 +22,23 @@ export const FilterToPriceTitle = styled.h1`
     font-size: 40px;
     line-height: 43px;
     letter-spacing: 0.1em;
+    margin-bottom: 10px;;
 `
 
 export const FilterToPriceP = styled.p`
     font-size: 24px;
     line-height: 26px;
     letter-spacing: 0.1em;
+    border-bottom: 1px solid transparent;
     margin: 10px 0;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+
+    :hover{
+        color: #adadad;
+        border-bottom: 1px solid #FFF;
+        padding-right: 10px;
+    }
 `
 
 export const InputFilterToPrice = styled.input`
@@ -49,12 +59,13 @@ export const InputFilterToPrice = styled.input`
 
     :focus-visible{
         outline: none;
-        background-color: #c7c7c7;
+        background-color: #adadad;
     }
 `
 
 export const DivInputFilterToPrice = styled.div`
     width: 100%;
+    margin: 10px 0;
     ${flexRow()}
     justify-content:space-between
 `

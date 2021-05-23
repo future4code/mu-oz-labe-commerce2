@@ -8,23 +8,32 @@ import {
     backGroundBlack
 } from '../../GlobalStyle'
 
-export const HeaderBackground = styled.header`
+export const HeaderTag = styled.header`
 
-    background-color: ${white};
     width: 100%;
     min-height: 100px;
     position: absolute;
     top: 0;
     z-index: 99;
 
+
+`
+export const HeaderBackground = styled.div`
+
+    background-color: ${white};
+    width: 100%;
+    min-height: 100px;
+    /* z-index: 99; */
+
 `
 
 export const HeaderContainer = styled.div`
     margin: 0 auto;
-    width: 90%;
+    width: 95%;
     max-width: 1440px;
     height: 100%;
     ${flexColumn()}  
+    z-index: 99;
    
 `
 
@@ -32,6 +41,8 @@ export const HeaderItems = styled.div`
     width: 100%;
     margin: 10px 0;
     ${flexRow()}
+    /* z-index: 99; */
+   
 `
 
 export const LogoHeader = styled.img`
@@ -70,17 +81,12 @@ export const ButtonCart = styled.button`
     border: none;
     outline: none;
     cursor: pointer;
- 
-`
-
-export const DivCart = styled.div`
     position: relative;
-`
 
-export const NumberItemsOfCart = styled.h2`
-    pointer-events: none;
+`
+export const CartCounter = styled.div`
     position: absolute;
-    left: 50%;    
-    transform: translatey(-14px);
+    right: 21px;
+    top: 10px;
     color: ${white};
 `
