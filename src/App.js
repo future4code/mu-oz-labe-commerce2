@@ -21,8 +21,7 @@ import Nave12 from './img/nave-012.png'
 
 import styled from 'styled-components'
 
-const FlexContainer = styled
-    .div`
+const FlexContainer = styled.div`
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -37,62 +36,62 @@ const arrayDeNaves = [
         image: Nave1,
         title: 'aNave 1',
         price: 3599,
-        quantity: 0
+        quantity: 1
     }, {
         image: Nave2,
         title: 'bNave 2',
         price: 4599,
-        quantity: 0
+        quantity: 1
     }, {
         image: Nave3,
         title: 'cNave 3',
         price: 5599,
-        quantity: 0
+        quantity: 1
     }, {
         image: Nave4,
         title: 'dNave 4',
         price: 3599,
-        quantity: 0
+        quantity: 1
     }, {
         image: Nave5,
         title: 'Nave 5',
         price: 6599,
-        quantity: 0
+        quantity: 1
     }, {
         image: Nave6,
         title: 'Nave 6',
         price: 1599,
-        quantity: 0
+        quantity: 1
     }, {
         image: Nave7,
         title: 'Nave 7',
         price: 599,
-        quantity: 0
+        quantity: 1
     }, {
         image: Nave8,
         title: 'Nave 8',
         price: 30599,
-        quantity: 0
+        quantity: 1
     }, {
         image: Nave9,
         title: 'Nave 9',
         price: 3599,
-        quantity: 0
+        quantity: 1
     }, {
         image: Nave10,
         title: 'Nave 10',
         price: 3599,
-        quantity: 0
+        quantity: 1
     }, {
         image: Nave11,
         title: 'Nave 11',
         price: 3599,
-        quantity: 0
+        quantity: 1
     }, {
         image: Nave12,
         title: 'Nave 12',
         price: 3599,
-        quantity: 0
+        quantity: 1
     }
 ]
 
@@ -106,6 +105,10 @@ class App extends React.Component {
         inputFilterMin: '',
         inputFilterMax: Infinity,
         orderByPrice: 'default',
+    }
+ 
+    cleanCart = () => {
+        this.setState({carrinho: []})
     }
 
     AddToCart = (product) => {
@@ -161,17 +164,26 @@ class App extends React.Component {
 
         this.setState({
             carrinho: this.state.carrinho.map((item, i) => {
-                if (i === index && item.quantity > 0) {
+                if (i === index && item.quantity > 1) {
                     return {
                         ...item,
                         quantity: item.quantity - 1
                     }
                 } else return item
              })
-        })
+             
+        }
+        
+        )
     //possível erro da função
         this.somaValores()
+        
+        
+        
+       
      }
+     
+  
       
 
     searchInput = (e) => this.funcToUpdateComponentsByInputSearch(e)
@@ -213,7 +225,7 @@ class App extends React.Component {
             orderByPrice: 'lowToHigh'
         })
     }
-  
+    
     render() {
         return (
             <FlexContainer>
@@ -227,6 +239,7 @@ class App extends React.Component {
                     somaValores={this.somaValores}
                     searchInput={this.searchInput}
                     searchValue={this.state.searchInputArea}
+                    cleanCart={this.cleanCart}
                 />
                                             
                 <Main

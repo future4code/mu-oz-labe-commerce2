@@ -43,15 +43,17 @@ class Header extends React.Component {
                         </DivSearch>
                         <ButtonCart onClick={this.clickHeaderButton}><img src={Carrinho} alt="Carrinho de compras" /></ButtonCart>
                     </HeaderItems>
-                    {this.state.buttonHasClicked && <ItemsChosenByUser cart={this.props.cart} 
+                    {this.state.buttonHasClicked && <ItemsChosenByUser 
+                    cart={this.props.cart} 
                     add={this.props.add} 
                     sub={this.props.sub} 
                     delete={this.props.delete} 
                     totalCarrinho={this.props.totalCarrinho}
                     somaValores={this.props.somaValores}
-                    />}
+                    cleanCart={this.props.cleanCart}
+                     />}
                 </HeaderContainer>
-
+                
             </HeaderBackground>
         )
     }

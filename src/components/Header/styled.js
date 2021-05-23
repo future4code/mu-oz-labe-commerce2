@@ -26,6 +26,9 @@ export const HeaderContainer = styled.div`
     max-width: 1440px;
     height: 100%;
     ${flexColumn()}  
+    
+    
+    
    
 `
 
@@ -33,6 +36,7 @@ export const HeaderItems = styled.div`
     width: 100%;
     margin: 10px 0;
     ${flexRow()}
+   
 `
 
 export const LogoHeader = styled.img`

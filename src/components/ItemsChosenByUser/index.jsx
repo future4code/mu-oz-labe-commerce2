@@ -20,20 +20,28 @@ import Delete from '../../icons/x.svg'
 import Plus from '../../icons/plus.svg'
 import Minus from '../../icons/minus.svg'
 import { ContainerCompra } from './styled'
+import CompraFinalizada from '../CompraFinalizada'
 
 
 
 
 export default class ItensCarrinho extends React.Component {
-
-   //   somaDosProdutos = this.props.products.reduce((accumulator, item)=>{
-   //    return accumulator += item.price 
-   //  })
-   render() {
-
-
-
-      return (
+    state = {
+      Clicou: false
+  }
+      
+     
+    finalizarCompra = (cleanCart) =>{
+      if(cleanCart === 'cleanCart'){
+          this.props.cleanCart()
+      }
+      this.setState
+      ({ Clicou: !this.state.Clicou })
+        
+    } 
+      render() {
+        
+       return (
 
          <>
             { this.props.cart.map((item, index) => {
@@ -81,9 +89,12 @@ export default class ItensCarrinho extends React.Component {
                      <H3Valor> R$ {this.props.somaValores()}
                      </H3Valor>
                   </div>
-                  <Finalizar>Finalizar Compra</Finalizar>
+                  <Finalizar onClick={this.finalizarCompra}>Finalizar Compra</Finalizar>
                </ContainerTotal>
             </ContainerCompra>
+               {this.state.Clicou && <CompraFinalizada finalizarCompra={this.finalizarCompra}
+                cleanCart={this.props.cleanCart}/> }
+         
          </>
 
       )
