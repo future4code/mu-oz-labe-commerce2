@@ -95,6 +95,13 @@ export const BotãoContador = styled.button`
     cursor: pointer;
 `
 
+export const Paragrafo = styled.p`
+    font-family: 'Ropa Sans', sans-serif;
+    letter-spacing: 0.1em;
+    color:rgba(39, 39, 39, 1);
+    font-size: 20px;
+`
+
 export const ContainerQuantity = styled.div`
     background-color: rgba(28, 28, 28, 1);
     color: white;

@@ -52,9 +52,7 @@ export default class CartList extends React.Component {
                         </Nave>
                         <ContainerNomeDescricao>
                            <Nome>{item.title}</Nome>
-                           <Paragrafo>
-                              Nave espacial modelo tesla sei la das contas com garantia de fabrica e isso e aquilo la da outra Nave espacial modelo tesla sei la das contas com garantia de fabrica e isso e aquilo la da
-                        </Paragrafo>
+                           <Paragrafo>{item.description}</Paragrafo>
                         </ContainerNomeDescricao>
                         <ContainerContador>
                            <PQuantidade>Quantidade</PQuantidade>
