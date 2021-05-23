@@ -88,6 +88,5 @@ export const CartCounter = styled.div`
     position: absolute;
     right: 21px;
     top: 10px;
-    color: #FFF;
-
+    color: ${white};
 `

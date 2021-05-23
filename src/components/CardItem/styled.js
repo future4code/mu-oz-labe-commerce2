@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import {white, backGroundBlack} from '../../GlobalStyle'
+import { white, backGroundBlack, black } from '../../GlobalStyle'
 
 export const CardItemContainer = styled.div`
     display:flex;
@@ -15,13 +15,17 @@ export const CardItemContainer = styled.div`
     border-radius: 10px;
 `
 export const CardImageContainer = styled.div`
-    background-color: #000;
+    /* background-color: #000; */
+    background-image: url('./star.png');
     display: flex;
     justify-content: center;
     align-items: center;
     height: 350px;
     min-height: 275px;
     width: 100%;
+    :hover{
+        background-image: url('https://i.giphy.com/media/TZf4ZyXb0lXXi/giphy.webp');
+    }
 `
 export const CardImage = styled.img`
     max-width: 80%;
@@ -56,13 +60,13 @@ export const CardContentContainer = styled.div`
 `
 
 export const CardTitle = styled.h2`
-    color: #000;
+    color: ${black};
 `
 
 export const CardPrice = styled.h3`
-    color: #000;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    color: ${black};
+    border-top: 1px solid ${black};
+    border-bottom: 1px solid ${black};
     padding: 5px 0;
 `
 
