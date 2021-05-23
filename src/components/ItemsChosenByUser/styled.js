@@ -60,6 +60,7 @@ export const Nave = styled.div`
     width: 15%;
     img {
         max-height: 24vh;
+        max-width: 100%;
     }
 `
 export const ContainerNomeDescricao = styled.div`
