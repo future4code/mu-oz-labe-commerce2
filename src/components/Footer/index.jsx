@@ -10,9 +10,15 @@ class Footer extends React.Component {
             <FooterBackground>
                 <Text>Desenvolvido por</Text>
                 <ContainerFooter>
-                    <R></R>
-                    <G></G>
-                    <B></B>
+                    <a href={'https://www.linkedin.com/in/rafaelsilveiradarosa'} target={'_blank'}>
+                        <R></R>
+                    </a>
+                    <a href={'https://www.linkedin.com/in/guilherme-gasparotti-cassettari-2759a81b0'} target={'_blank'}>
+                        <G></G>
+                    </a>
+                    <a href={'https://www.linkedin.com/in/brendha-luiza-barbosa-587154201'} target={'_blank'}>
+                        <B></B>
+                    </a>
                 </ContainerFooter>
             </FooterBackground>
         )

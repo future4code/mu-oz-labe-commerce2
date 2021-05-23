@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import {white} from '../../GlobalStyle'
+
 
 export const FooterBackground = styled.footer`
     display: flex;
@@ -12,6 +14,11 @@ export const FooterBackground = styled.footer`
 export const ContainerFooter = styled.div`
     color:white;
     display: flex;
+
+    a{
+        text-decoration: none;
+        color: ${white};
+    }
 `
 
 export const Text = styled.p`
