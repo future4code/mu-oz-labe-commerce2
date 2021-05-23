@@ -5,7 +5,7 @@ import Header from './components/Header';
 import PopUp from './components/PopUp'
 
 import GlobalStyle from './GlobalStyle';
-import {FlexContainer, DivAddedToCart, CloseMessage} from './styled';
+import { FlexContainer, DivAddedToCart, CloseMessage } from './styled';
 
 import Nave1 from './img/nave-01.png'
 import Nave2 from './img/nave-02.png'
@@ -46,55 +46,55 @@ const arrayDeNaves = [
         title: 'Soyuz',
         price: 10599,
         quantity: 1,
-        description:'As Soyuzs são pequenas naves de apenas um ocupante, fáceis de manobrar, e armadas com lasers.'
+        description: 'As Soyuzs são pequenas naves de apenas um ocupante, fáceis de manobrar, e armadas com lasers.'
     }, {
         image: Nave5,
         title: 'Shengzhou',
         price: 9599,
         quantity: 1,
-        description:'A nave é bastante semelhante aos veículos russos Soyuz. Desse modo, ela possui três módulos: orbital, de reentrada e de serviço. O módulo orbital, no entanto, possui painéis solares próprios.'
+        description: 'A nave é bastante semelhante aos veículos russos Soyuz. Desse modo, ela possui três módulos: orbital, de reentrada e de serviço. O módulo orbital, no entanto, possui painéis solares próprios.'
     }, {
         image: Nave6,
         title: 'Millenium Falcon',
         price: 67599,
         quantity: 1,
-        description:'A Millenium Falcon se destaca pela sua amplitude e sua versatilidade em quesito conforto e adaptação, podendo transportar até 3 pessoas em sua cabine.'
+        description: 'A Millenium Falcon se destaca pela sua amplitude e sua versatilidade em quesito conforto e adaptação, podendo transportar até 3 pessoas em sua cabine.'
     }, {
         image: Nave7,
         title: 'Colonial Viper',
         price: 5299,
         quantity: 1,
-        description:'A Viper é a nave espacial com maior período de uso na história da exploração espacial e é considerada muito eficiente e segura'
+        description: 'A Viper é a nave espacial com maior período de uso na história da exploração espacial e é considerada muito eficiente e segura'
     }, {
         image: Nave8,
         title: 'Tie Fighter',
         price: 30599,
         quantity: 1,
-        description:'Este modelo costuma ser escohido para missões mais perigosas, esta nave possui uma velocidade jamais vista até os dias atuais, e transporta apenas 1 pessoa.'
+        description: 'Este modelo costuma ser escohido para missões mais perigosas, esta nave possui uma velocidade jamais vista até os dias atuais, e transporta apenas 1 pessoa.'
     }, {
         image: Nave9,
         title: 'X-Wing',
         price: 34599,
         quantity: 1,
-        description:'Possui 3 cabines separadas, podendo transportar até 8 pessoas em cada.'
+        description: 'Possui 3 cabines separadas, podendo transportar até 8 pessoas em cada.'
     }, {
         image: Nave10,
         title: 'Yamato',
         price: 98599,
         quantity: 1,
-        description:'Modelo Yamato é o modelo clássico para viagens espaciais, pode transportar até 4 pessoas.'
+        description: 'Modelo Yamato é o modelo clássico para viagens espaciais, pode transportar até 4 pessoas.'
     }, {
         image: Nave11,
         title: 'Axiom',
         price: 87999,
         quantity: 1,
-        description:'Modelo Axiom se tornou a maior nave já vista, podendo transportar até 30 tripulantes.'
+        description: 'Modelo Axiom se tornou a maior nave já vista, podendo transportar até 30 tripulantes.'
     }, {
         image: Nave12,
         title: 'Cygnus',
         price: 210599,
         quantity: 1,
-        description:'O modelo mais recente, do ano de 2020, possui asas planejadas para maior velocidade. Possui 4 cabines diferentes, podendo transportar até 5 pessoas. '
+        description: 'O modelo mais recente, do ano de 2020, possui asas planejadas para maior velocidade. Possui 4 cabines diferentes, podendo transportar até 5 pessoas. '
     }
 ]
 
@@ -111,24 +111,34 @@ class App extends React.Component {
         successPopUp: false,
         isCartOpen: false
     }
- 
 
+    componentDidMount() {
+        if (localStorage.getItem("cart")) {
+            const cartString = localStorage.getItem("cart")
+            const cartObject = JSON.parse(cartString)
+            this.setState({ cart: cartObject })
+        }      
+    };
+
+    componentDidUpdate() {
+        localStorage.setItem("cart", JSON.stringify(this.state.cart))
+      };
 
     addToCart = (product) => {
         let alreadyExists = false
 
         if (this.state.cart.length === 0) {
             this.setState({
-                cart: [...this.state.cart,  product]
+                cart: [...this.state.cart, product]
             })
         }
 
-        for (let i = 0; i < this.state.cart.length; i++){
+        for (let i = 0; i < this.state.cart.length; i++) {
 
-            if (this.state.cart[i].title === product.title){
+            if (this.state.cart[i].title === product.title) {
                 const cartCopy = [...this.state.cart]
 
-                cartCopy[i] = {...product, quantity: cartCopy[i].quantity + 1}
+                cartCopy[i] = { ...product, quantity: cartCopy[i].quantity + 1 }
 
                 this.setState({
                     cart: [...cartCopy]
@@ -140,7 +150,7 @@ class App extends React.Component {
 
         if (!alreadyExists) {
             this.setState({
-                cart: [...this.state.cart,  product]
+                cart: [...this.state.cart, product]
             })
 
             alreadyExists = false
@@ -154,10 +164,10 @@ class App extends React.Component {
             wasAddedToCart: true
         })
 
-        setTimeout(() => { 
+        setTimeout(() => {
             this.setState({
                 wasAddedToCart: false
-            }) 
+            })
         }, 2000);
     }
 
@@ -182,8 +192,8 @@ class App extends React.Component {
     }
 
     openCartButton = () => {
-        this.setState({ 
-            isCartOpen: !this.state.isCartOpen 
+        this.setState({
+            isCartOpen: !this.state.isCartOpen
         })
     }
 
@@ -194,20 +204,20 @@ class App extends React.Component {
 
         return <span>{totalCompra}</span>
     }
-    
+
 
     delete = (index) => {
         this.setState({
             cart: this.state.cart.filter((item, i) => {
-                    if (i !== index) {
-                        return true
-                    } else {
-                        return false
-                    }
-                })
+                if (i !== index) {
+                    return true
+                } else {
+                    return false
+                }
+            })
         })
     }
-    
+
     add = (index) => {
         this.setState({
             cart: this.state.cart.map((item, i) => {
@@ -221,7 +231,7 @@ class App extends React.Component {
             })
         })
     }
-  
+
     sub = (index) => {
         this.setState({
             cart: this.state.cart.map((item, i) => {
@@ -234,7 +244,7 @@ class App extends React.Component {
             })
         })
     }
-     
+
     searchInput = (e) => this.funcToUpdateComponentsByInputSearch(e)
     funcToUpdateComponentsByInputSearch = (e) => {
         this.setState({
@@ -274,7 +284,7 @@ class App extends React.Component {
             orderByPrice: 'lowToHigh'
         })
     }
-    
+
     render() {
         return (
             <FlexContainer>
@@ -293,7 +303,7 @@ class App extends React.Component {
                     openCartButton={this.openCartButton}
                     isCartOpen={this.state.isCartOpen}
                 />
-                                            
+
                 <Main
                     products={this.state.products}
                     addToCart={this.addToCart}
@@ -307,7 +317,7 @@ class App extends React.Component {
                     orderByPrice={this.state.orderByPrice}
                 />
 
-                {this.state.wasAddedToCart && 
+                {this.state.wasAddedToCart &&
                     <DivAddedToCart>
                         Produto adicionado ao carrinho
                         <CloseMessage onClick={this.closeCartMessage}>
@@ -321,7 +331,7 @@ class App extends React.Component {
                         cleanCart={this.cleanCart} 
                     />
                 }
-                
+
                 <Footer />
             </FlexContainer>
         );

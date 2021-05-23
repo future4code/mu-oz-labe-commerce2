@@ -42,6 +42,7 @@ export const ContainerItemImg = styled.div`
     width: 15%;
     img {
         max-height: 24vh;
+        max-width: 100%;
     }
 `
 export const ContainerProductText = styled.div`
