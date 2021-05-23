@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import {white, backGroundBlack, black} from '../../GlobalStyle'
+import { white, backGroundBlack, black } from '../../GlobalStyle'
 
 export const CardItemContainer = styled.div`
     display:flex;
@@ -16,13 +16,16 @@ export const CardItemContainer = styled.div`
 `
 export const CardImageContainer = styled.div`
     /* background-color: #000; */
-    background-image: url('https://i.giphy.com/media/TZf4ZyXb0lXXi/giphy.webp');
+    background-image: url('./star.png');
     display: flex;
     justify-content: center;
     align-items: center;
     height: 350px;
     min-height: 300px;
     width: 100%;
+    :hover{
+        background-image: url('https://i.giphy.com/media/TZf4ZyXb0lXXi/giphy.webp');
+    }
 `
 export const CardImage = styled.img`
     max-width: 80%;
