@@ -3,6 +3,7 @@ import ItemsChosenByUser from '../ItemsChosenByUser'
 
 
 import {
+    HeaderTag,
     HeaderBackground,
     HeaderContainer,
     HeaderItems,
@@ -11,11 +12,14 @@ import {
     InputSearch,
     LupaIcon,
     ButtonCart,
+    CartCounter
 } from './styled'
 
 import Logo from '../../icons/Logo.svg'
-import Carrinho from '../../icons/Carrinho.svg'
+import CartIcon from '../../icons/Carrinho.svg'
 import Lupa from '../../icons/Lupa.svg'
+import UpArrow from '../../icons/up-arrow.svg'
+
 
 class Header extends React.Component {
     state = {
@@ -27,34 +31,50 @@ class Header extends React.Component {
 
     render() {
         return (
-            <HeaderBackground>
-                <HeaderContainer>
-                    <HeaderItems>
-                        <LogoHeader src={Logo} alt="Logo Space eComerce" />
-                        <DivSearch>
-                            <InputSearch
-                                type="text"
-                                name="Digite os items"
-                                placeholder="Digite sua busca..."
-                                onChange={(e) => this.props.searchInput(e)}
-                                value={this.props.searchInputArea}
-                            />
-                            <LupaIcon src={Lupa} alt="" srcset="" />
-                        </DivSearch>
-                        <ButtonCart onClick={this.clickHeaderButton}><img src={Carrinho} alt="Carrinho de compras" /></ButtonCart>
-                    </HeaderItems>
-                    {this.state.buttonHasClicked && <ItemsChosenByUser 
-                    cart={this.props.cart} 
-                    add={this.props.add} 
-                    sub={this.props.sub} 
-                    delete={this.props.delete} 
-                    totalCarrinho={this.props.totalCarrinho}
-                    somaValores={this.props.somaValores}
-                    cleanCart={this.props.cleanCart}
-                     />}
-                </HeaderContainer>
+            <HeaderTag>
+                <HeaderBackground>
+                    <HeaderContainer>
+                        <HeaderItems>
+                            <LogoHeader src={Logo} alt="Logo Space eCommerce" />
+                            <DivSearch>
+                                <InputSearch
+                                    type="text"
+                                    name="Digite os items"
+                                    placeholder="Digite sua busca..."
+                                    onChange={(e) => this.props.searchInput(e)}
+                                    value={this.props.searchInputArea}
+                                />
+                                <LupaIcon src={Lupa} alt="" srcset="" />
+                            </DivSearch>
+                            <ButtonCart
+                                onClick={this.props.openCartButton}>
+                                <img
+                                    src={this.props.isCartOpen ?
+                                        UpArrow :
+                                        CartIcon
+                                }
+                                alt="Carrinho de compras" />
+                                {this.props.isCartOpen || 
+                                <CartCounter>{this.props.cart.length}</CartCounter>
+                                }
+                            </ButtonCart>
+                        </HeaderItems>
+                    </HeaderContainer>
+
+                </HeaderBackground>
                 
-            </HeaderBackground>
+                {this.props.isCartOpen && 
+                    <ItemsChosenByUser
+                        cart={this.props.cart}
+                        add={this.props.add}
+                        sub={this.props.sub}
+                        delete={this.props.delete}
+                        somaValores={this.props.somaValores}
+                        cleanCart={this.props.cleanCart}
+                        finishPopUp={this.props.finishPopUp}
+                    />
+                }
+            </HeaderTag>
         )
     }
 }

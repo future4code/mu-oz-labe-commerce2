@@ -19,6 +19,9 @@ export const Text = styled.p`
 `
 
 export const Circulo = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     margin: 0 5px;
     height: 25px;
@@ -27,6 +30,7 @@ export const Circulo = styled.div`
     overflow: hidden;
     
     :hover {
+        display: block;
         width: 200px;
         border-radius: 10px;
         cursor: pointer;
@@ -35,7 +39,13 @@ export const Circulo = styled.div`
 `
 export const R = styled(Circulo)`
     background-color: red;
+    :before{
+        content: "R";
+    }
     :hover {
+        :before{
+            content: "";
+        }
         :after {
             content: "Rafael S. da Rosa";
             line-height: 25px;
@@ -45,7 +55,13 @@ export const R = styled(Circulo)`
     `
 export const G = styled(Circulo)`
     background-color: green;
+    :before{
+        content: "G";
+    }
     :hover {
+        :before{
+            content: "";
+        }
         :after {
             content: "Guilherme G. Cassettari";
             line-height: 25px;
@@ -54,7 +70,13 @@ export const G = styled(Circulo)`
 `
 export const B = styled(Circulo)`
     background-color: blue;
+    :before{
+        content: "B";
+    }
     :hover {
+        :before{
+            content: "";
+        }
         :after {
             content: "Brendha L. B. Pereira";
             line-height: 25px;
