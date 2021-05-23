@@ -1,7 +1,6 @@
 import React from 'react'
 import ItemsChosenByUser from '../ItemsChosenByUser'
 
-
 import {
     HeaderTag,
     HeaderBackground,
@@ -21,12 +20,14 @@ import Lupa from '../../icons/Lupa.svg'
 import UpArrow from '../../icons/up-arrow.svg'
 
 
-class Header extends React.Component {
+export default class Header extends React.Component {
     state = {
         buttonHasClicked: false
     }
 
-    clickHeaderButton = () => this.setState({ buttonHasClicked: !this.state.buttonHasClicked })
+    clickHeaderButton = () => this.setState({ 
+        buttonHasClicked: !this.state.buttonHasClicked 
+    })
 
 
     render() {
@@ -44,7 +45,7 @@ class Header extends React.Component {
                                     onChange={(e) => this.props.searchInput(e)}
                                     value={this.props.searchInputArea}
                                 />
-                                <LupaIcon src={Lupa} alt="" srcset="" />
+                                <LupaIcon src={Lupa} alt="Lupa Icon" />
                             </DivSearch>
                             <ButtonCart
                                 onClick={this.props.openCartButton}>
@@ -52,31 +53,29 @@ class Header extends React.Component {
                                     src={this.props.isCartOpen ?
                                         UpArrow :
                                         CartIcon
-                                }
-                                alt="Carrinho de compras" />
+                                    }
+                                    alt="Carrinho de compras" 
+                                />
                                 {this.props.isCartOpen || 
                                 <CartCounter>{this.props.cart.length}</CartCounter>
                                 }
                             </ButtonCart>
                         </HeaderItems>
                     </HeaderContainer>
-
                 </HeaderBackground>
                 
                 {this.props.isCartOpen && 
-                    <ItemsChosenByUser
-                        cart={this.props.cart}
-                        add={this.props.add}
-                        sub={this.props.sub}
-                        delete={this.props.delete}
-                        somaValores={this.props.somaValores}
-                        cleanCart={this.props.cleanCart}
-                        finishPopUp={this.props.finishPopUp}
-                    />
+                <ItemsChosenByUser
+                    cart={this.props.cart}
+                    add={this.props.add}
+                    sub={this.props.sub}
+                    delete={this.props.delete}
+                    CartTotal={this.props.CartTotal}
+                    cleanCart={this.props.cleanCart}
+                    finishPopUp={this.props.finishPopUp}
+                />
                 }
             </HeaderTag>
         )
     }
 }
-
-export default Header

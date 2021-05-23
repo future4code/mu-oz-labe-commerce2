@@ -3,22 +3,22 @@ import React from 'react'
 import {
    CartContainer,
    ContainerItem,
-   Nave,
+   ContainerItemImg,
    DeleteIcon,
-   Nome,
-   Paragrafo,
-   ContainerNomeDescricao,
+   ContainerProductText,
+   ItemName,
+   ItemDescription,
+   ItemQuantity,
    ContainerQuantity,
-   ContainerContador,
-   ContainerPlusMinus,
-   PQuantidade,
-   BotãoContador,
-   Finalizar,
+   QuantityController,
+   QuantityTitle,
+   QuantityControllerButton,
+   CartFooter,
    Logo,
    ContainerTotal,
    H1Total,
-   H3Valor,
-   ContainerCompra
+   H3Total,
+   FinishButton
 } from './styled'
 
 import LogoFinalizar from '../../icons/Logo.svg'
@@ -44,51 +44,50 @@ export default class CartList extends React.Component {
                               onClick={() => this.props.delete(index)}
                            />
                         </DeleteIcon>
-                        <Nave>
+                        <ContainerItemImg>
                            <img
                               src={item.image}
                               alt={item.name}
                            />
-                        </Nave>
-                        <ContainerNomeDescricao>
-                           <Nome>{item.title} - R$ {item.price},00</Nome>
-                           <Paragrafo>{item.description}</Paragrafo>
-                        </ContainerNomeDescricao>
-                        <ContainerContador>
-                           <PQuantidade>Quantidade</PQuantidade>
-                           <ContainerPlusMinus>
-                              <BotãoContador
+                        </ContainerItemImg>
+                        <ContainerProductText>
+                           <ItemName>{item.title} - R$ {item.price},00</ItemName>
+                           <ItemDescription>{item.description}</ItemDescription>
+                        </ContainerProductText>
+                        <ContainerQuantity>
+                           <QuantityTitle>Quantidade</QuantityTitle>
+                           <QuantityController>
+                              <QuantityControllerButton
                                  onClick={() => this.props.sub(index)}>
-                                 <img src={Minus} alt="menos" />
-                              </BotãoContador>
-                              <ContainerQuantity>
+                                 <img src={Minus} alt="menos"
+                              />
+                              </QuantityControllerButton>
+                              <ItemQuantity>
                                  {item.quantity}
-                              </ContainerQuantity>
-                              <BotãoContador
+                              </ItemQuantity>
+                              <QuantityControllerButton
                                  onClick={() => this.props.add(index)}>
-                                 <img src={Plus} alt="mais" />
-                              </BotãoContador>
-                           </ContainerPlusMinus>
-                        </ContainerContador>
+                                 <img src={Plus} alt="mais" 
+                              />
+                              </QuantityControllerButton>
+                           </QuantityController>
+                        </ContainerQuantity>
                      </ContainerItem>
                   )
                })
             }
 
-            <ContainerCompra>
-               <Logo src={LogoFinalizar} alt="" />
+            <CartFooter>
+               <Logo src={LogoFinalizar} alt="Space eCommerce logo" />
                <ContainerTotal>
                   <div>
-                     <H1Total>Total</H1Total>
-                     <H3Valor> R$ {this.props.somaValores()},00
-                     </H3Valor>
+                     <H1Total> Total </H1Total>
+                     <H3Total> R$ {this.props.CartTotal()},00 </H3Total>
                   </div>
-                  <Finalizar onClick={this.props.finishPopUp}>Finalizar Compra</Finalizar>
+                  <FinishButton onClick={this.props.finishPopUp}>Finalizar Compra</FinishButton>
                </ContainerTotal>
-            </ContainerCompra>
+            </CartFooter>
          </CartContainer>
-
       )
-
    }
 }

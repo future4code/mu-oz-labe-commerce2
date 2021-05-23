@@ -2,7 +2,7 @@ import React from 'react';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import CompraFinalizada from './components/CompraFinalizada'
+import PopUp from './components/PopUp'
 
 import GlobalStyle from './GlobalStyle';
 import {FlexContainer, DivAddedToCart, CloseMessage} from './styled';
@@ -114,7 +114,7 @@ class App extends React.Component {
  
 
 
-    AddToCart = (product) => {
+    addToCart = (product) => {
         let alreadyExists = false
 
         if (this.state.cart.length === 0) {
@@ -133,6 +133,7 @@ class App extends React.Component {
                 this.setState({
                     cart: [...cartCopy]
                 })
+
                 alreadyExists = true
             }
         }
@@ -141,15 +142,16 @@ class App extends React.Component {
             this.setState({
                 cart: [...this.state.cart,  product]
             })
+
             alreadyExists = false
         }
 
-        this.addedToCartMessage(true)
+        this.addedToCartMessage()
     }
     
-    addedToCartMessage = (controller) => {
+    addedToCartMessage = () => {
         this.setState({
-            wasAddedToCart: controller
+            wasAddedToCart: true
         })
 
         setTimeout(() => { 
@@ -183,11 +185,9 @@ class App extends React.Component {
         this.setState({ 
             isCartOpen: !this.state.isCartOpen 
         })
-
-        this.addedToCartMessage(false)
     }
 
-    somaValores = () => {
+    CartTotal = () => {
         const totalCompra = this.state.cart.map((item) => {
             return item.price * item.quantity
         }).reduce((accumulator, totalCompra) => totalCompra += accumulator, 0)
@@ -223,7 +223,6 @@ class App extends React.Component {
     }
   
     sub = (index) => {
-
         this.setState({
             cart: this.state.cart.map((item, i) => {
                 if (i === index && item.quantity > 1) {
@@ -236,9 +235,6 @@ class App extends React.Component {
         })
     }
      
-  
-      
-
     searchInput = (e) => this.funcToUpdateComponentsByInputSearch(e)
     funcToUpdateComponentsByInputSearch = (e) => {
         this.setState({
@@ -289,7 +285,7 @@ class App extends React.Component {
                     sub={this.sub}
                     delete={this.delete}
                     totalcart={this.state.totalcart}
-                    somaValores={this.somaValores}
+                    CartTotal={this.CartTotal}
                     searchInput={this.searchInput}
                     searchValue={this.state.searchInputArea}
                     cleanCart={this.cleanCart}
@@ -300,7 +296,7 @@ class App extends React.Component {
                                             
                 <Main
                     products={this.state.products}
-                    AddToCart={this.AddToCart}
+                    addToCart={this.addToCart}
                     searchInputArea={this.state.searchInputArea}
                     inputFilterMax={this.state.inputFilterMax}
                     inputFilterMin={this.state.inputFilterMin}
@@ -321,9 +317,8 @@ class App extends React.Component {
                 }
 
                 {this.state.successPopUp && 
-                    <CompraFinalizada 
-                    finalizarCompra={this.finalizarCompra}
-                    cleanCart={this.cleanCart} 
+                    <PopUp 
+                        cleanCart={this.cleanCart} 
                     />
                 }
                 
